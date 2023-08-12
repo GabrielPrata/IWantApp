@@ -1,4 +1,5 @@
-﻿using IWantApp.Domain.Products;
+﻿using Flunt.Notifications;
+using IWantApp.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 
 namespace IWantApp.Infra.Data;
@@ -12,6 +13,10 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        //Como a classe Entity herda de notification, algumas regras da classe(Possuir chave primaria, por exemplo)
+        //Atrapalham a forma de como a minha aplicação é construída. Por isso eu adiciono o builder.Ignore
+        builder.Ignore<Notification>();
+
         builder.Entity<Product>()
             .Property(p => p.Name).IsRequired();
 

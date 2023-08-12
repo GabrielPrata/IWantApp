@@ -7,7 +7,8 @@ namespace IWantApp.Endpoints.Categories;
 public class CategoryPut
 {
     //Já atribuo um valor ao criar a propriedade
-    public static string Template => "/categories/{id}";
+    //id:guid = defino que o parâmetro esperado é do tipo guid
+    public static string Template => "/categories/{id:guid}";
 
     //Seto os métodos permitidos para esta endpoint
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
@@ -17,8 +18,19 @@ public class CategoryPut
     public static IResult Action([FromRoute] Guid id, CategoryRequest categoryRequest, ApplicationDbContext context)
     {
         var category = context.Categories.Where(c => c.Id == id).FirstOrDefault();
-        category.Name = categoryRequest.Name;
-        category.Active = categoryRequest.Active;
+
+        //O LINQ não encontrou nenhuma categoria com o ID passado, portanto o valor de category sera null
+        if (category == null)
+        {
+            return Results.NotFound();
+        }
+
+        category.EditInfo(categoryRequest.Name, categoryRequest.Active);
+
+        if (!category.IsValid)
+        {
+            return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
+        }
 
         context.SaveChanges();
 
