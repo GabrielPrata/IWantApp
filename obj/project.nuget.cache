@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/fb8I2D5HAaVxTDNIBmPVD+WQwQWYesHYkL1mLP3v9trWTyu77F2c2PqCjjqi4QVEcOx4Y6Xb0DXW/tAJqrxvg==",
+  "dgSpecHash": "oFDmSaXMFOVzs7aRK/OlWkbgOqRtSbfZ8ypugp5c5jCyhLQfLz+zOBWVNACg0vkPIa4zGRJq9aCDdUusr6oGnQ==",
   "success": true,
-  "projectFilePath": "C:\\Curso .NET\\IWantApp\\src\\IWantApp.csproj",
+  "projectFilePath": "C:\\VS Studio\\IWantApp\\IWantApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabri\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
