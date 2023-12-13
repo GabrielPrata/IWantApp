@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Domain\\Products",
+    "\\Endpoints",
+    "\\Endpoints\\Categories",
+    "\\Endpoints\\Employees",
+    "\\Infra",
+    "\\Infra\\Data",
+    "\\Migrations"
   ],
-  "SelectedNode": "\\IWantApp.sln",
+  "SelectedNode": "\\Endpoints\\Employees\\EmployeeGetAll.cs",
   "PreviewInSolutionExplorer": false
 }
