@@ -19,6 +19,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<QueryAllUsersWithClaimName>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -38,4 +39,5 @@ app.MapMethods(CategoryGetAll.Template, CategoryGetAll.Methods, CategoryGetAll.H
 app.MapMethods(CategoryPut.Template, CategoryPut.Methods, CategoryPut.Handle);
 app.MapMethods(EmployeePost.Template, EmployeePost.Methods, EmployeePost.Handle);
 app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.Handle);
+
 app.Run();

@@ -160,3 +160,4 @@ C:\VS Studio\IWantApp\obj\Debug\net6.0\refint\IWantApp.dll
 C:\VS Studio\IWantApp\obj\Debug\net6.0\IWantApp.pdb
 C:\VS Studio\IWantApp\obj\Debug\net6.0\IWantApp.genruntimeconfig.cache
 C:\VS Studio\IWantApp\obj\Debug\net6.0\ref\IWantApp.dll
+C:\VS Studio\IWantApp\bin\Debug\net6.0\Dapper.dll

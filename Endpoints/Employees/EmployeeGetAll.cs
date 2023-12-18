@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
+﻿using IWantApp.Infra.Data;
 
 namespace IWantApp.Endpoints.Employees;
 
@@ -13,21 +12,15 @@ public class EmployeeGetAll
 
     public static Delegate Handle => Action;
 
-    //UserManager gerencia IdentityUser
-    public static IResult Action(UserManager<IdentityUser> userManager)
+    //O Identity não é muito bom para lidar com uma grande "massa de dados", pois pode gerar problemas de performance
+    //Normalmente para necessidades gerais utilo o EF Core. E para necessidades específicas, onde eu preciso de
+    //performance utilizo o Dapper. Abaixo, é um caso onde eu necessito de performance
+
+    //Toda vez que no endpoint eu quiser pegar informações do appsettings.json, basta injetar o IConfiguration
+    //que o ASP.NET já entende que eu quero o acesso as configurações da minha aplicação
+    public static IResult Action(int? page, int? rows, QueryAllUsersWithClaimName query)
     {
-        var users = userManager.Users.ToList();
-
-        var employees = new List<EmployeeResponse>();
-        foreach (var user in users)
-        {
-            var claims = userManager.GetClaimsAsync(user).Result;
-            var claimName = claims.FirstOrDefault(c => c.Type == "Name");
-            var userName = claimName != null ? claimName.Value : string.Empty;
-
-            employees.Add(new EmployeeResponse(user.Email, userName));
-        }
-
-        return Results.Ok(employees);
+        //Utilizo o .Value pois o valor pode ser nulo, isso evita de dar pau no sistema
+        return Results.Ok(query.Execute(page.Value, rows.Value));
     }
 }
