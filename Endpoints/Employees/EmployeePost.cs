@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-
-namespace IWantApp.Endpoints.Employees;
+﻿namespace IWantApp.Endpoints.Employees;
 
 public class EmployeePost
 {
@@ -14,13 +11,13 @@ public class EmployeePost
     public static Delegate Handle => Action;
 
     //UserManager gerencia IdentityUser
-    public static IResult Action(EmployeeRequest employeeRequest, HttpContext http, UserManager<IdentityUser> userManager)
+    public static async Task<IResult> Action(EmployeeRequest employeeRequest, HttpContext http, UserManager<IdentityUser> userManager)
     {
         var newUser = new IdentityUser { UserName = employeeRequest.Email, Email = employeeRequest.Email };
         var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
 
         //Passo o objeto do usuário e seu password
-        var result = userManager.CreateAsync(newUser, employeeRequest.Password).Result;
+        var result = await userManager.CreateAsync(newUser, employeeRequest.Password);
 
         if (!result.Succeeded)
         {
@@ -33,7 +30,7 @@ public class EmployeePost
             new Claim("CreatedBy", userId)
         };
 
-        var claimResult = userManager.AddClaimsAsync(newUser, userClaims).Result;
+        var claimResult = await userManager.AddClaimsAsync(newUser, userClaims);
 
         if (!claimResult.Succeeded)
         {

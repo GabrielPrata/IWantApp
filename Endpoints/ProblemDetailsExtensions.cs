@@ -1,8 +1,4 @@
-﻿using Flunt.Notifications;
-using Microsoft.AspNetCore.Identity;
-using System.Runtime.CompilerServices;
-
-namespace IWantApp.Endpoints;
+﻿namespace IWantApp.Endpoints;
 
 public static class ProblemDetailsExtensions
 {

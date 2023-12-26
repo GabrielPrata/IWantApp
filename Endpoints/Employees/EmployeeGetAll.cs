@@ -1,7 +1,4 @@
-﻿using IWantApp.Infra.Data;
-using Microsoft.AspNetCore.Authorization;
-
-namespace IWantApp.Endpoints.Employees;
+﻿namespace IWantApp.Endpoints.Employees;
 
 public class EmployeeGetAll
 {
@@ -20,9 +17,9 @@ public class EmployeeGetAll
     //Toda vez que no endpoint eu quiser pegar informações do appsettings.json, basta injetar o IConfiguration
     //que o ASP.NET já entende que eu quero o acesso as configurações da minha aplicação
     [Authorize(Policy = "Employee099Policy")]
-    public static IResult Action(int? page, int? rows, QueryAllUsersWithClaimName query)
+    public static async Task<IResult> Action(int? page, int? rows, QueryAllUsersWithClaimName query)
     {
-        //Utilizo o .Value pois o valor pode ser nulo, isso evita de dar pau no sistema
-        return Results.Ok(query.Execute(page.Value, rows.Value));
+        var result = await query.Execute(page.Value, rows.Value);
+        return Results.Ok(result);
     }
 }
