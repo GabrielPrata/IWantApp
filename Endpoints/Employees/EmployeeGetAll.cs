@@ -1,6 +1,6 @@
 ﻿namespace IWantApp.Endpoints.Employees;
 
-public class EmployeeGetAll
+public class ProductsGetAll
 {
     //Já atribuo um valor ao criar a propriedade
     public static string Template => "/employees";

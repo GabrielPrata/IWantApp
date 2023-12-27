@@ -9,7 +9,7 @@ public class QueryAllUsersWithClaimName
             Configuration = configuration;
     }
 
-    public async Task<IEnumerable<EmployeeResponse>> Execute(int page, int rows)
+    public async Task<IEnumerable<ProductsResponse>> Execute(int page, int rows)
     {
         var db = new SqlConnection(Configuration["ConnectionString:IWantDb"]);
 
@@ -23,7 +23,7 @@ public class QueryAllUsersWithClaimName
             OFFSET (@page - 1) * @rows ROWS FETCH NEXT @rows ROWS ONLY";
 
         //Crio um objeto sem nome
-        return await db.QueryAsync<EmployeeResponse>(
+        return await db.QueryAsync<ProductsResponse>(
            query, new { page, rows }
         );
     }

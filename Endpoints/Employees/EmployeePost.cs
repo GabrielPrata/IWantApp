@@ -1,6 +1,6 @@
 ﻿namespace IWantApp.Endpoints.Employees;
 
-public class EmployeePost
+public class ProductsPost
 {
     //Já atribuo um valor ao criar a propriedade
     public static string Template => "/employees";
@@ -11,7 +11,7 @@ public class EmployeePost
     public static Delegate Handle => Action;
 
     //UserManager gerencia IdentityUser
-    public static async Task<IResult> Action(EmployeeRequest employeeRequest, HttpContext http, UserManager<IdentityUser> userManager)
+    public static async Task<IResult> Action(ProductsRequest employeeRequest, HttpContext http, UserManager<IdentityUser> userManager)
     {
         var newUser = new IdentityUser { UserName = employeeRequest.Email, Email = employeeRequest.Email };
         var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;

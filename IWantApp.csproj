@@ -35,11 +35,12 @@
 		
 		<Using Include="IWantApp.Endpoints.Employees" />
 		<Using Include="IWantApp.Endpoints.Categories" />
-		<Using Include="IWantApp.Endpoints.Employees" />
 		<Using Include="IWantApp.Endpoints.Security" />
+		<Using Include="IWantApp.Endpoints.Products;" />
 		<Using Include="IWantApp.Infra.Data" />
 		<Using Include="IWantApp.Domain.Products" />
-
+		
+		
 		<Using Include="Serilog" />
 		<Using Include="Serilog.Sinks.MSSqlServer" />
 		<Using Include="Serilog.Sinks.MSSqlServer.Sinks.MSSqlServer.Options" />
@@ -73,10 +74,6 @@
 
 	<ItemGroup>
 		<None Include="C:\Curso .NET\IWantApp\src\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Endpoints\Products\" />
 	</ItemGroup>
 
 </Project>
