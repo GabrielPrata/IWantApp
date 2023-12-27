@@ -21,6 +21,7 @@
 		<Using Include="Microsoft.AspNetCore.Identity" />
 		<Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.AspNetCore.Diagnostics" />
 		
 		<Using Include="Microsoft.IdentityModel.Tokens" />
 		
@@ -38,8 +39,12 @@
 		<Using Include="IWantApp.Endpoints.Security" />
 		<Using Include="IWantApp.Infra.Data" />
 		<Using Include="IWantApp.Domain.Products" />
-		
-		
+
+		<Using Include="Serilog" />
+		<Using Include="Serilog.Sinks.MSSqlServer" />
+		<Using Include="Serilog.Sinks.MSSqlServer.Sinks.MSSqlServer.Options" />
+
+
 	</ItemGroup>
 
 	<ItemGroup>
@@ -57,6 +62,8 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Serilog.AspnetCore" Version="8.0.0" />
+		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
 
@@ -66,6 +73,10 @@
 
 	<ItemGroup>
 		<None Include="C:\Curso .NET\IWantApp\src\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Endpoints\Products\" />
 	</ItemGroup>
 
 </Project>

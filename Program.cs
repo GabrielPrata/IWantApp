@@ -1,6 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:IWantDb"]);
 
+//Configuração do Log no banco de dados
+
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration
+    .WriteTo.Console()
+    .WriteTo.MSSqlServer(
+        context.Configuration["ConnectionString:IWantDb"],
+        sinkOptions: new MSSqlServerSinkOptions()
+        {
+            AutoCreateSqlDatabase = true,
+            TableName = "LogAPI",
+        });
+});
+
 //Para diminuir a segurança exigida para a senha
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
@@ -94,6 +109,21 @@ app.MapMethods(EmployeePost.Template, EmployeePost.Methods, EmployeePost.Handle)
 app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.Handle);
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
+app.UseExceptionHandler("/error");
+app.Map("/error", (HttpContext http) =>
+{
+    //Pego qual foi o erro que aconteceu
+    var error = http.Features?.Get<IExceptionHandlerFeature>().Error;
 
+    if (error != null)
+    {
+        if(error is SqlException)
+        {
+            return Results.Problem(title: "An error ocurred in the system database", statusCode: 500);
+        }
+    }
+
+    return Results.Problem(title: "An error ocurred", statusCode: 500);
+});
 
 app.Run();

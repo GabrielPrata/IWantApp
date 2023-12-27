@@ -12,8 +12,15 @@ public class TokenPost
 
     [AllowAnonymous]
     //UserManager gerencia IdentityUser
-    public static IResult Action(LoginRequest loginRequest, IConfiguration configuration, UserManager<IdentityUser> userManager)
+    public static IResult Action(LoginRequest loginRequest, IConfiguration configuration, UserManager<IdentityUser> userManager, ILogger<TokenPost> log)
     {
+        log.LogInformation("Getting token");
+        log.LogWarning("Warning");
+        log.LogError("Error");
+        log.LogCritical("Critical");
+        log.LogDebug("Debug");
+        log.LogTrace("Trace");
+
         var user = userManager.FindByEmailAsync(loginRequest.Email).Result;
 
         if (user == null)
