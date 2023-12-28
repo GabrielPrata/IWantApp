@@ -45,9 +45,11 @@
 		<Using Include="IWantApp.Endpoints.Security" />
 		<Using Include="IWantApp.Endpoints.Products" />
 		<Using Include="IWantApp.Endpoints.Clients" />
+		<Using Include="IWantApp.Endpoints.Orders" />
 		<Using Include="IWantApp.Infra.Data" />
 		<Using Include="IWantApp.Domain.Products" />
 		<Using Include="IWantApp.Domain.Users" />
+		<Using Include="IWantApp.Domain.Orders" />
 
 		<Using Include="Serilog" />
 		<Using Include="Serilog.Sinks.MSSqlServer" />

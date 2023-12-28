@@ -53,6 +53,10 @@ builder.Services.AddAuthorization(options =>
         //Além de validar que a claim existe, eu valido também o valor do claim
         p.RequireAuthenticatedUser().RequireClaim("EmployeeCode", "099")
     );
+
+    options.AddPolicy("CpfPolicy", p =>
+       p.RequireAuthenticatedUser().RequireClaim("Cpf")
+   );
 });
 
 builder.Services.AddAuthentication(x =>
@@ -115,6 +119,7 @@ app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Hand
 app.MapMethods(ProductGetShowCase.Template, ProductGetShowCase.Methods, ProductGetShowCase.Handle);
 app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
 app.MapMethods(ClientGet.Template, ClientGet.Methods, ClientGet.Handle);
+app.MapMethods(OrderPost.Template, OrderPost.Methods, OrderPost.Handle);
 
 app.UseExceptionHandler("/error");
 app.Map("/error", (HttpContext http) =>

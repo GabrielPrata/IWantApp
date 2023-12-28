@@ -34,7 +34,7 @@ public class ProductGetShowCase
         var products = queryFilter.ToList();
 
 
-        var results = products.Select(p => new ProductResponse(p.Name, p.Category.Name, p.Description, p.HasStock, p.Active, p.Price));
+        var results = products.Select(p => new ProductResponse(p.Id ,p.Name, p.Category.Name, p.Description, p.HasStock, p.Active, p.Price));
         return Results.Ok(results);
     }
 }
