@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Domain\NovaPasta\**" />
+	  <Content Remove="Domain\NovaPasta\**" />
+	  <EmbeddedResource Remove="Domain\NovaPasta\**" />
+	  <None Remove="Domain\NovaPasta\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Using Include="System.Text" />
 		<Using Include="System.IdentityModel.Tokens.Jwt" />
 		<Using Include="System.Security.Claims" />
@@ -36,11 +43,12 @@
 		<Using Include="IWantApp.Endpoints.Employees" />
 		<Using Include="IWantApp.Endpoints.Categories" />
 		<Using Include="IWantApp.Endpoints.Security" />
-		<Using Include="IWantApp.Endpoints.Products;" />
+		<Using Include="IWantApp.Endpoints.Products" />
+		<Using Include="IWantApp.Endpoints.Clients" />
 		<Using Include="IWantApp.Infra.Data" />
 		<Using Include="IWantApp.Domain.Products" />
-		
-		
+		<Using Include="IWantApp.Domain.Users" />
+
 		<Using Include="Serilog" />
 		<Using Include="Serilog.Sinks.MSSqlServer" />
 		<Using Include="Serilog.Sinks.MSSqlServer.Sinks.MSSqlServer.Options" />
