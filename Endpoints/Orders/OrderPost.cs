@@ -1,6 +1,4 @@
-﻿using IWantApp.Domain.Products;
-
-namespace IWantApp.Endpoints.Orders;
+﻿namespace IWantApp.Endpoints.Orders;
 
 public class OrderPost
 {

@@ -1,3 +1,3 @@
 ﻿namespace IWantApp.Endpoints.Employees;
 
-public record ProductsResponse(Guid id, string Email, string Name);
+public record EmployeeResponse(string Id, string Email, string Name);

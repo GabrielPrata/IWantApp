@@ -88,6 +88,7 @@ builder.Services.AddAuthentication(x =>
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddScoped<QueryAllUsersWithClaimName>();
+builder.Services.AddScoped<QueryAmountSalesProducts>();
 builder.Services.AddScoped<UserCreator>();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -112,10 +113,11 @@ app.MapMethods(CategoryPost.Template, CategoryPost.Methods, CategoryPost.Handle)
 app.MapMethods(CategoryGetAll.Template, CategoryGetAll.Methods, CategoryGetAll.Handle);
 app.MapMethods(CategoryPut.Template, CategoryPut.Methods, CategoryPut.Handle);
 app.MapMethods(ProductsPost.Template, ProductsPost.Methods, ProductsPost.Handle);
-app.MapMethods(ProductsGetAll.Template, ProductsGetAll.Methods, ProductsGetAll.Handle);
+app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.Handle);
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
 app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
+app.MapMethods(ProductGetTotalSold.Template, ProductGetTotalSold.Methods, ProductGetTotalSold.Handle);
 app.MapMethods(ProductGetShowCase.Template, ProductGetShowCase.Methods, ProductGetShowCase.Handle);
 app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
 app.MapMethods(ClientGet.Template, ClientGet.Methods, ClientGet.Handle);
