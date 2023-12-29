@@ -1,4 +1,6 @@
-﻿namespace IWantApp.Domain.Orders;
+﻿using System.Text.Json.Serialization;
+
+namespace IWantApp.Domain.Orders;
 
 public class Order : Entity
 {

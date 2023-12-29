@@ -1,4 +1,6 @@
-﻿namespace IWantApp.Domain.Products;
+﻿using System.Text.Json.Serialization;
+
+namespace IWantApp.Domain.Products;
 
 public class Product : Entity
 {
@@ -9,9 +11,18 @@ public class Product : Entity
     public bool HasStock { get; private set; }
     public bool Active { get; private set; } = true;
     public decimal Price { get; private set; }
+    [JsonIgnore]
     public ICollection<Order> Orders { get; private set; }
 
     private Product() { }
+
+    public Product(string name, Category category, string description, decimal price)
+    {
+        Name = name;
+        Category = category;
+        Description = description;
+        Price = price;
+    }
 
     public Product(string name, Category category, string description, bool hasStock, decimal price, string createdBy)
     {
